@@ -8,9 +8,9 @@ export const Todos = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <ul>
       {todos.map((todo) => (
-        <div key={todo.id}>
+        <li key={todo.id}>
           <h2>{todo.title}</h2>
           <input
             type="checkbox"
@@ -18,8 +18,8 @@ export const Todos = () => {
             onChange={() => dispatch(toggleTodo(todo.id))}
           />
           <button onClick={() => dispatch(deleteTodo(todo.id))}>Delete</button>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };

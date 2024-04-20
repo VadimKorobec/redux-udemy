@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { createStore, combineReducers } from "redux";
+import { devToolsEnhancer } from "@redux-devtools/extension";
 
 const counterReducer = (state = 0, action) => {
   switch (action.type) {
@@ -16,21 +17,28 @@ const counterReducer = (state = 0, action) => {
 
 const todosReducer = (state = [], action) => {
   switch (action.type) {
-    case "CREATE_TODO":
+    case "CREATE_TODO": {
       return [
         ...state,
         { id: nanoid(), title: action.title, completed: false },
       ];
-    case "DELETE_TODO":
+    }
+
+    case "DELETE_TODO": {
       return state.filter((item) => item.id !== action.todoId);
-    case "TOGGLE_TODO":
+    }
+
+    case "TOGGLE_TODO": {
       return state.map((item) =>
         item.id === action.todoId
-          ? { ...item, completed: !action.completed }
+          ? { ...item, completed: !item.completed }
           : item
       );
-    default:
+    }
+
+    default: {
       return state;
+    }
   }
 };
 
@@ -39,7 +47,8 @@ const rootReducer = combineReducers({
   todos: todosReducer,
 });
 
-export const store = createStore(rootReducer);
+const enhancer = devToolsEnhancer();
+export const store = createStore(rootReducer, enhancer);
 
 export const increment = { type: "INCREMENT" };
 export const decrement = { type: "DECREMENT" };
