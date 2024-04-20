@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addTodo } from "../src/store/actions/todos-actions";
+import { addTodo } from "../store/actions/todos-actions";
 
 export const TodoForm = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const TodoForm = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="title" />
+        <input type="text" name="title" placeholder="new todo" />
         <button type="submit">Create Todo</button>
       </form>
     </>

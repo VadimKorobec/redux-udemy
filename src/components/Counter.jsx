@@ -1,10 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  increment,
-  decrement,
-  reset,
-} from "../src/store/actions/counter-actions";
-import { getCounter } from "./store/selectors/counter-selectors";
+import { increment, decrement, reset } from "../store/actions/counter-actions";
+import { getCounter } from "../store/selectors/counter-selectors";
 
 export const Counter = () => {
   const count = useSelector(getCounter);
