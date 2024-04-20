@@ -1,8 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { increment, decrement, reset } from "./store";
+import {
+  increment,
+  decrement,
+  reset,
+} from "../src/store/actions/counter-actions";
+import { getCounter } from "./store/selectors/counter-selectors";
 
 export const Counter = () => {
-  const count = useSelector((state) => state.counter);
+  const count = useSelector(getCounter);
 
   const dispatch = useDispatch();
 
