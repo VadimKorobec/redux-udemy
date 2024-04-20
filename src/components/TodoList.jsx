@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import { TodoItem } from "./TodoItem";
 import { selectVisibleTodos } from "../store/selectors/todos-selectors";
-import { selectActiveFilter } from "../store/selectors/filters-selectors";
 
 export const TodoList = () => {
-  const activeFilter = useSelector(selectActiveFilter);
-  const todos = useSelector((state) => selectVisibleTodos(state, activeFilter));
+  const { filter } = useParams();
+  const todos = useSelector((state) => selectVisibleTodos(state, filter));
 
   return (
     <ul>
